@@ -1,5 +1,5 @@
 import "./App.css";
-import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
+import { Navbar, Footer, Sidebar, ThemeSettings } from "./components/index.js";
 import {
   Ecommerce,
   Orders,
@@ -18,7 +18,7 @@ import {
   Customers,
   Line,
   
-} from "./pages";
+} from "./pages/index.jsx";
 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -66,7 +66,7 @@ function App() {
             }`}
           >
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
-              Navbar
+              <Navbar />
             </div>
           </div>
           <div>
