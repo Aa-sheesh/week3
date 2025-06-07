@@ -1,18 +1,41 @@
 import "./App.css";
+import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
+import {
+  Ecommerce,
+  Orders,
+  Calendar,
+  Employees,
+  Stacked,
+  Pyramid,
+  Kanban,
+  Area,
+  Bar,
+  Pie,
+  Financial,
+  ColorPicker,
+  ColorMapping,
+  Editor,
+  Customers,
+  Line,
+  
+} from "./pages";
+
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+// import { Settings } from "lucide-react";
+import {CiSettings} from "react-icons/ci";
 
 import { registerLicense } from "@syncfusion/ej2-base";
-import { Settings } from "lucide-react";
+
+import {useStateContext} from "./contexts/ContextProvider.jsx";
 
 registerLicense(
   "ORg4AjUWIQA/Gnt2XFhhQlJHfVhdWnxLflFzVWVTe1Z6dV1WESFaRnZdR11lSXlTcEBiWH9ednFdTWJV"
 );
 
 function App() {
-  const activeMenu = true; // This can be a state variable to toggle the sidebar
+  const {activeMenu} = useStateContext(); 
   return (
     <>
       <BrowserRouter>
@@ -21,19 +44,21 @@ function App() {
             <TooltipComponent content="Settings" position="Top">
               <button
                 type="button"
-                className="p-3 hover:drop-shadow-xl hover:bg-light-gray text-white"
+                className="p-2 hover:drop-shadow-xl hover:bg-light-gray text-white text-3xl"
                 style={{ background: "blue", borderRadius: "50%" }}
               >
-                <Settings />
+                <CiSettings  />
               </button>
             </TooltipComponent>
           </div>
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-              Sidebar
+              <Sidebar />
             </div>
           ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg ">Sidebar hidden</div>
+            <div className="w-0 dark:bg-secondary-dark-bg ">
+              <Sidebar />
+            </div>
           )}
           <div
             className={`dark:bg-main-bg bg-main-bg h-screen ${
@@ -46,31 +71,30 @@ function App() {
           </div>
           <div>
             <Routes>
-            {/* Dashboard  */}
-              <Route path="/" element="ECommerce"/>
-              <Route path="/ecommerce" element="ECommerce"/>
+              {/* Dashboard  */}
+              <Route path="/" element={ <Ecommerce/> } />
+              <Route path="/ecommerce" element={ <Ecommerce/> } />
 
               {/* Pages  */}
-              <Route path="/orders" element="Orders"/> 
-              <Route path="/employees" element="Employees"/> 
-              <Route path="/customers" element="Customers"/> 
+              <Route path="/orders" element={<Orders/>} />
+              <Route path="/employees" element={<Employees/>} />
+              <Route path="/customers" element={<Customers/>} />
 
               {/* Apps  */}
-              <Route path="/kanban" element="Kanban"/>
-              <Route path="/editor" element="Editor"/>
-              <Route path="/calendar" element="Calendar"/>
-              <Route path="/color-picker" element="ColorPicker"/>
+              <Route path="/kanban" element={<Kanban/>} />
+              <Route path="/editor" element={<Editor/>} />
+              <Route path="/calendar" element={<Calendar/>} />
+              <Route path="/color-picker" element={<ColorPicker/>} />
 
               {/* Charts  */}
-              <Route path="/line" element="Line"/>
-              <Route path="/area" element="Area"/>
-              <Route path="/bar" element="Bar"/>
-              <Route path="/pie" element="Pie"/>
-              <Route path="/financial" element="Financial"/>
-              <Route path="/color-mapping" element="Colormapping"/>
-              <Route path="/pyramid" element="ColorPicker"/>
-              <Route path="/line" element="Line"/>
- 
+              <Route path="/line" element={<Line/>} />
+              <Route path="/area" element={<Area/>} />
+              <Route path="/bar" element={<Bar/>} />
+              <Route path="/pie" element={<Pie/>} />
+              <Route path="/financial" element={<Financial/>} />
+              <Route path="/color-mapping" element={<ColorMapping/>} />
+              <Route path="/pyramid" element={<ColorPicker/>} />
+              <Route path="/line" element={<Line/>} />
             </Routes>
           </div>
         </div>
