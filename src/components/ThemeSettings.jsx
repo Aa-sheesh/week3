@@ -11,7 +11,7 @@ const ThemeSettings = () => {
 
   return (
     <div className="bg-half-transparent w-screen fixed nav-item top-0 right-0">
-      <div className="float-right h-screen dark:text-gray-200  bg-white dark:bg-[#484B52] ">
+      <div className="float-right h-screen dark:text-gray-200  bg-white dark:bg-[#484B52] w-400">
         <div className="flex justify-between items-center p-4 ml-4">
           <p className="font-semibold text-lg">Settings</p>
           <button
@@ -37,6 +37,7 @@ const ThemeSettings = () => {
               onChange={setMode}
               checked={currentMode === 'Light'}
             />
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label htmlFor="light" className="ml-2 text-md cursor-pointer">
               Light
             </label>
